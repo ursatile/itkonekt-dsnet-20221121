@@ -8,5 +8,8 @@ namespace Autobarn.Messages {
         public string Color { get; set; }
         public int Year { get; set; }
         public DateTimeOffset ListedAt { get; set; }
+        public override string ToString() {
+            return $"{Registration} ({ManufacturerName} {ModelName}, {Year}, {Color}) - listed at {ListedAt:O}";
+        }
     }
 }

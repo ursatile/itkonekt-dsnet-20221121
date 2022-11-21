@@ -19,6 +19,7 @@ namespace Autobarn.AuditLog {
 
 
         public async Task StartAsync(CancellationToken cancellationToken) {
+            Console.WriteLine("Starting AuditLogService...");
             logger.LogInformation("Starting AuditLogService...");
             await bus.PubSub.SubscribeAsync<NewVehicleMessage>(
                 subscriptionId, HandleNewVehicleMessage);
@@ -26,6 +27,7 @@ namespace Autobarn.AuditLog {
 
         public Task StopAsync(CancellationToken cancellationToken) {
             logger.LogInformation("Stopping AuditLogService...");
+            Console.WriteLine("Stopping AuditLogService...");
             return Task.CompletedTask;
         }
 
