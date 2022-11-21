@@ -58,8 +58,8 @@ namespace Autobarn.Website.Controllers.api {
         private void PublishNewVehicleMessage(Vehicle vehicle) {
             var m = new NewVehicleMessage {
                 Registration = vehicle.Registration,
-                ManufacturerName = vehicle.VehicleModel.Manufacturer.Name,
-                ModelName = vehicle.VehicleModel.Name,
+                ManufacturerName = vehicle?.VehicleModel?.Manufacturer?.Name ?? "UNKNOWN",
+                ModelName = vehicle?.VehicleModel?.Name ?? "UNKNOWN",
                 Color = vehicle.Color,
                 Year = vehicle.Year,
                 ListedAt = DateTimeOffset.UtcNow
