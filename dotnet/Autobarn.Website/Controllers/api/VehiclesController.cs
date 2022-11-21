@@ -44,20 +44,6 @@ namespace Autobarn.Website.Controllers.api {
             return Ok(vehicle.ToResource());
         }
 
-        // POST api/vehicles
-        [HttpPost]
-        public IActionResult Post([FromBody] VehicleDto dto) {
-            var vehicleModel = db.FindModel(dto.ModelCode);
-            var vehicle = new Vehicle {
-                Registration = dto.Registration,
-                Color = dto.Color,
-                Year = dto.Year,
-                VehicleModel = vehicleModel
-            };
-            db.CreateVehicle(vehicle);
-            return Ok(dto);
-        }
-
         // PUT api/vehicles/ABC123
         [HttpPut("{id}")]
         public IActionResult Put(string id, [FromBody] VehicleDto dto) {
@@ -69,7 +55,7 @@ namespace Autobarn.Website.Controllers.api {
                 ModelCode = vehicleModel.Code
             };
             db.UpdateVehicle(vehicle);
-            return Ok(dto);
+            return Ok(vehicle.ToResource());
         }
 
         // DELETE api/vehicles/ABC123

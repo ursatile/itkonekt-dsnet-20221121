@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Dynamic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using Autobarn.Data.Entities;
 
 namespace Autobarn.Website.Controllers {
     public static class HypermediaExtensions {
-        public static dynamic ToDynamic(this object value, object links) {
+        public static dynamic ToDynamic(this object value, object links, object actions = null) {
             IDictionary<string, object> expando = new ExpandoObject();
             expando.Add("_links", links);
+            if (actions != default) expando.Add("_actions", actions);
             var properties = TypeDescriptor.GetProperties(value.GetType());
             foreach (PropertyDescriptor property in properties) {
                 if (Ignore(property)) continue;
@@ -18,16 +20,47 @@ namespace Autobarn.Website.Controllers {
             return expando;
         }
 
-        public static dynamic ToResource(this Vehicle vehicle) {
+        public static dynamic ToResource(this Model model) {
             var links = new {
                 self = new {
-                    href = $"/api/vehicles/{vehicle.Registration}"
+                    href = $"/api/models/{model.Code}"
+                }
+            };
+            var actions = new {
+                create = new {
+                    name = $"Create a new {model.Manufacturer.Name} {model.Name}",
+                    href = $"/api/models/{model.Code}",
+                    method = "POST",
+                    type = "application/json"
+                }
+            };
+            return model.ToDynamic(links, actions);
+
+        }
+        public static dynamic ToResource(this Vehicle vehicle) {
+            var href = $"/api/vehicles/{vehicle.Registration}";
+            var links = new {
+                self = new {
+                    href
                 },
                 model = new {
                     href = $"/api/models/{vehicle.ModelCode}"
                 }
             };
-            return vehicle.ToDynamic(links);
+            var actions = new {
+                update = new {
+                    name = "Update this vehicle",
+                    type = "application/json",
+                    href,
+                    method = "PUT"
+                },
+                delete = new {
+                    name = "Delete this vehicle",
+                    href,
+                    method = "DELETE"
+                }
+            };
+            return vehicle.ToDynamic(links, actions);
         }
 
         private static bool Ignore(PropertyDescriptor property) {

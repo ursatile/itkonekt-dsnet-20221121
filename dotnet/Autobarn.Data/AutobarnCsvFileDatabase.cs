@@ -99,6 +99,7 @@ namespace Autobarn.Data {
 		public Manufacturer FindManufacturer(string code) => manufacturers.GetValueOrDefault(code);
 
 		public void CreateVehicle(Vehicle vehicle) {
+            vehicle.ModelCode = vehicle.VehicleModel.Code;
 			vehicle.VehicleModel.Vehicles.Add(vehicle);
 			UpdateVehicle(vehicle);
 		}
