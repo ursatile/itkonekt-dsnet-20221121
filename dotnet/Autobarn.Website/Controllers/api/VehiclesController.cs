@@ -20,6 +20,7 @@ namespace Autobarn.Website.Controllers.api {
         }
 
         const int PAGE_SIZE = 10;
+
         // GET: api/vehicles
         [HttpGet]
         [Produces("application/hal+json")]
@@ -29,17 +30,18 @@ namespace Autobarn.Website.Controllers.api {
             var _links = Hal.Paginate("/api/vehicles", index, total, PAGE_SIZE);
             var result = new {
                 _links,
-                items
+                items = items.Select(item => item.ToResource())
             };
             return Ok(result);
         }
 
         // GET api/vehicles/ABC123
         [HttpGet("{id}")]
+        [Produces("application/hal+json")]
         public IActionResult Get(string id) {
             var vehicle = db.FindVehicle(id);
             if (vehicle == default) return NotFound();
-            return Ok(vehicle);
+            return Ok(vehicle.ToResource());
         }
 
         // POST api/vehicles
