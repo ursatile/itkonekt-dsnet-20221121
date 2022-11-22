@@ -1,4 +1,4 @@
-﻿using Autobarn.Data;
+using Autobarn.Data;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 

@@ -3,6 +3,7 @@ using Autobarn.Data;
 using Autobarn.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 using Autobarn.Messages;
 using Autobarn.Website.Models;
 using Castle.Core.Logging;
@@ -24,8 +25,8 @@ namespace Autobarn.Website.Controllers.api {
         }
 
 		[HttpGet]
-		public IEnumerable<Model> Get() {
-			return db.ListModels();
+		public IActionResult Get() {
+			return Ok(db.ListModels().Select(m => m.ToResource()));
 		}
 
 		[HttpGet("{id}")]
@@ -34,7 +35,6 @@ namespace Autobarn.Website.Controllers.api {
 			if (vehicleModel == default) return NotFound();
             return Ok(vehicleModel.ToResource());
 		}
-
 
         // POST api/vehicles
         [HttpPost("{id}")]

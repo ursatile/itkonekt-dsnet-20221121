@@ -11,13 +11,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autobarn.Website.Tests", "A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autobarn.Messages", "Autobarn.Messages\Autobarn.Messages.csproj", "{BD454376-06D8-4EC8-BBE6-5F45B9412ECB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autobarn.AuditLog", "Autobarn.AuditLog\Autobarn.AuditLog.csproj", "{E2AAACA1-C8E1-4F81-94DB-03D0B37D694B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autobarn.AuditLog", "Autobarn.AuditLog\Autobarn.AuditLog.csproj", "{E2AAACA1-C8E1-4F81-94DB-03D0B37D694B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autobarn.PricingClient", "Autobarn.PricingClient\Autobarn.PricingClient.csproj", "{71EDC6AA-EE3E-413F-9244-EC9DD6E2C5C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autobarn.PricingClient", "Autobarn.PricingClient\Autobarn.PricingClient.csproj", "{71EDC6AA-EE3E-413F-9244-EC9DD6E2C5C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autobarn.PricingServer", "Autobarn.PricingServer\Autobarn.PricingServer.csproj", "{C8C7EBA8-B6C2-41E1-A2CC-7DEE76AA2712}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autobarn.PricingServer", "Autobarn.PricingServer\Autobarn.PricingServer.csproj", "{C8C7EBA8-B6C2-41E1-A2CC-7DEE76AA2712}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autobarn.Notifier", "Autobarn.Notifier\Autobarn.Notifier.csproj", "{BD03EE5A-5AB6-4AE9-8B72-8023ADC76B7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autobarn.Notifier", "Autobarn.Notifier\Autobarn.Notifier.csproj", "{BD03EE5A-5AB6-4AE9-8B72-8023ADC76B7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autobarn.CarPoster", "Autobarn.CarPoster\Autobarn.CarPoster.csproj", "{036810FC-0901-4669-AC4E-C3C7F678D67C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -125,6 +127,18 @@ Global
 		{BD03EE5A-5AB6-4AE9-8B72-8023ADC76B7D}.Release|x64.Build.0 = Release|Any CPU
 		{BD03EE5A-5AB6-4AE9-8B72-8023ADC76B7D}.Release|x86.ActiveCfg = Release|Any CPU
 		{BD03EE5A-5AB6-4AE9-8B72-8023ADC76B7D}.Release|x86.Build.0 = Release|Any CPU
+		{036810FC-0901-4669-AC4E-C3C7F678D67C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{036810FC-0901-4669-AC4E-C3C7F678D67C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{036810FC-0901-4669-AC4E-C3C7F678D67C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{036810FC-0901-4669-AC4E-C3C7F678D67C}.Debug|x64.Build.0 = Debug|Any CPU
+		{036810FC-0901-4669-AC4E-C3C7F678D67C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{036810FC-0901-4669-AC4E-C3C7F678D67C}.Debug|x86.Build.0 = Debug|Any CPU
+		{036810FC-0901-4669-AC4E-C3C7F678D67C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{036810FC-0901-4669-AC4E-C3C7F678D67C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{036810FC-0901-4669-AC4E-C3C7F678D67C}.Release|x64.ActiveCfg = Release|Any CPU
+		{036810FC-0901-4669-AC4E-C3C7F678D67C}.Release|x64.Build.0 = Release|Any CPU
+		{036810FC-0901-4669-AC4E-C3C7F678D67C}.Release|x86.ActiveCfg = Release|Any CPU
+		{036810FC-0901-4669-AC4E-C3C7F678D67C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
