@@ -1,4 +1,5 @@
 using EasyNetQ;
+using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -9,6 +10,11 @@ namespace Autobarn.Notifier {
         static void Main(string[] args) {
             var builder = Host.CreateDefaultBuilder()
                 .ConfigureServices((hostBuilderContext, services) => {
+                    var hubUrl = hostBuilderContext.Configuration["SignalRHubUrl"];
+                    var hub = new HubConnectionBuilder()
+                        .WithUrl(hubUrl)
+                        .Build();
+                    services.AddSingleton(hub);
                     var amqp = hostBuilderContext.Configuration.GetConnectionString("RabbitMQ");
                     var bus = RabbitHutch.CreateBus(amqp);
                     services.AddSingleton(bus);
