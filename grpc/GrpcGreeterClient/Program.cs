@@ -18,7 +18,10 @@ while(true) {
         '3' => "en-AU",
         _ => "en-GB"
     };
+    var random = new Random();
+    var friendliness = random.Next(3) - 1;
     var request = new HelloRequest {
+        Friendliness = friendliness,
         LanguageCode = languageCode,
         Name = "ITKonekt!"
     };
