@@ -8,7 +8,7 @@ using Autobarn.Website.Models;
 using EasyNetQ;
 
 namespace Autobarn.Website.Controllers.api {
-	[Route("api/[controller]")]
+    [Route("api/[controller]")]
 	[ApiController]
 	public class ModelsController : ControllerBase {
 		private readonly IAutobarnDatabase db;
