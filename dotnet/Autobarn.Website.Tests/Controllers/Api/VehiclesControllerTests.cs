@@ -21,7 +21,7 @@ namespace Autobarn.Website.Tests.Controllers.Api {
         public void POST_Publishes_Vehicle_To_Bus() {
             var db = new FakeDatabase();
             var bus = new FakeBus();
-            var c = new ModelsController(db, bus);
+            var c = new ModelsController(db, bus, null);
             c.Post("test-test", new VehicleDto() {
                 Registration = "TEST0002",
                 Color = "Blue",

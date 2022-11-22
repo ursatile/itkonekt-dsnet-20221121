@@ -10,12 +10,13 @@ public class GreeterService : Greeter.GreeterBase {
     }
 
     public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context) {
+        var name = request.FirstName + " " + request.LastName;
         Console.WriteLine(request.LanguageCode);
         var message = request.LanguageCode switch {
-            "en-GB" => $"Good morning, {request.Name}.",
-            "en-US" => $"Howdy, {request.Name}.",
-            "en-AU" => $"G'day, {request.Name}.",
-            _ => "Hello {request.Name}"
+            "en-GB" => $"Good morning, {name}.",
+            "en-US" => $"Howdy, {name}.",
+            "en-AU" => $"G'day, {name}.",
+            _ => "Hello {name}"
         };
         message += request.Friendliness switch {
             -1 => " You look terrible.",

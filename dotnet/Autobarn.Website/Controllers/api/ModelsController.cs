@@ -5,7 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Autobarn.Messages;
 using Autobarn.Website.Models;
+using Castle.Core.Logging;
 using EasyNetQ;
+using Microsoft.Extensions.Logging;
 
 namespace Autobarn.Website.Controllers.api {
     [Route("api/[controller]")]
@@ -13,10 +15,12 @@ namespace Autobarn.Website.Controllers.api {
 	public class ModelsController : ControllerBase {
 		private readonly IAutobarnDatabase db;
         private readonly IBus bus;
+        private readonly ILogger<ModelsController> logger;
 
-        public ModelsController(IAutobarnDatabase db, IBus bus) {
+        public ModelsController(IAutobarnDatabase db, IBus bus, ILogger<ModelsController> logger) {
             this.db = db;
             this.bus = bus;
+            this.logger = logger;
         }
 
 		[HttpGet]
@@ -64,6 +68,7 @@ namespace Autobarn.Website.Controllers.api {
                 Year = vehicle.Year,
                 ListedAt = DateTimeOffset.UtcNow
             };
+            logger.LogInformation($"Publishing NewVehicleMessage: {m}");
             bus.PubSub.Publish(m);
         }
 	}

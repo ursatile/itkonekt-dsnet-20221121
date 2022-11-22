@@ -23,7 +23,8 @@ while(true) {
     var request = new HelloRequest {
         Friendliness = friendliness,
         LanguageCode = languageCode,
-        Name = "ITKonekt!"
+        FirstName = "ITKonekt",
+        LastName = "People"
     };
     var reply = await client.SayHelloAsync(request);
     Console.WriteLine(reply);

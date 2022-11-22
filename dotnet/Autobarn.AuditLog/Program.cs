@@ -13,11 +13,6 @@ namespace Autobarn.AuditLog {
                     var bus = RabbitHutch.CreateBus(amqp);
                     services.AddSingleton(bus);
                     services.AddHostedService<AuditLogService>();
-                })
-                .ConfigureLogging((_, logging) => {
-                    logging.ClearProviders();
-                    logging.AddSimpleConsole(options => options.IncludeScopes = true);
-                    // logging.AddEventLog();
                 });
 
             var host = builder.Build();
