@@ -37,8 +37,10 @@ namespace Autobarn.PricingClient {
                 Model = message.ModelName
             };
             var client = new Pricer.PricerClient(channel);
-            var price = await client.GetPriceAsync(pr);
-            logger.LogInformation($"Calculated price: {price.Price} {price.CurrencyCode}");
+            var priceReply = await client.GetPriceAsync(pr);
+            logger.LogInformation($"Calculated price: {priceReply.Price} {priceReply.CurrencyCode}");
+            var newVehiclePriceMessage = message.AddPrice(priceReply.Price, priceReply.CurrencyCode);
+            await bus.PubSub.PublishAsync(newVehiclePriceMessage);
         }
 
         public Task StopAsync(CancellationToken cancellationToken) {
